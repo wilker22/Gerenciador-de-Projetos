@@ -19,5 +19,3 @@ Route::get('/clients', 'ClientController@index');
 Route::post('/clients', 'ClientController@store');
 Route::get('/clients/{id}', 'ClientController@show');
 Route::put('/clients/{id}', 'ClientController@update');
-
-//Route::resource('clients', 'ClientController', ['except' => ['create', 'edit']]);
