@@ -19,3 +19,4 @@ Route::get('/clients', 'ClientController@index');
 Route::post('/clients', 'ClientController@store');
 Route::get('/clients/{id}', 'ClientController@show');
 Route::put('/clients/{id}', 'ClientController@update');
+Route::delete('/clients/{id}', 'ClientController@destroy');
