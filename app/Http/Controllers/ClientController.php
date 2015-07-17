@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace CodeProject\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use CodeProject\Http\Requests;
+use CodeProject\Http\Controllers\Controller;
 
-use App\Client;
+use CodeProject\Client;
 
 class ClientController extends Controller{
     

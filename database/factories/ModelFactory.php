@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(App\User::class, function ($faker) {
+$factory->define(CodeProject\User::class, function ($faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->email,
@@ -20,7 +20,7 @@ $factory->define(App\User::class, function ($faker) {
     ];
 });
 
-$factory->define(App\Client::class, function ($faker) {
+$factory->define(CodeProject\Client::class, function ($faker) {
     return [
         'name' => $faker->company,
         'responsible' => $faker->name,
