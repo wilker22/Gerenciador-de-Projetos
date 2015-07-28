@@ -3,21 +3,36 @@
 namespace CodeProject\Http\Controllers;
 
 use Illuminate\Http\Request;
+use CodeProject\Repositories\ClientRepository;
+use CodeProject\Services\ClientService;
 
-use CodeProject\Http\Requests;
-use CodeProject\Http\Controllers\Controller;
+class ClientController extends Controller {
+    /**
+     * @var ClientRepository
+     */
+    private $repository;
 
-use CodeProject\Client;
+    /**
+     * @var ClientService
+     */
+    private $service;
 
-class ClientController extends Controller{
-    
+    /**
+     * @param type ClientRepository $repository 
+     * @param type ClientService $service 
+     */
+    public function __construct(ClientRepository $repository, ClientService $service){
+        $this->repository = $repository;
+        $this->service = $service;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
     public function index(){
-        return Client::all();
+        return $this->repository->all();
     }
 
     /**
@@ -27,7 +42,7 @@ class ClientController extends Controller{
      * @return Response
      */
     public function store(Request $request){
-        return Client::create($request->all());
+        return $this->service->create($request->all());
     }
 
     /**
@@ -37,7 +52,7 @@ class ClientController extends Controller{
      * @return Response
      */
     public function show($id){
-        return Client::find($id);
+        return $this->repository->find($id);
     }
 
     /**
@@ -48,7 +63,7 @@ class ClientController extends Controller{
      * @return Response
      */
     public function update(Request $request, $id){
-        return response()->json(Client::find($id)->update($request->all()));
+        return $this->service->update($request->all(), $id);
     }
 
     /**
@@ -58,6 +73,6 @@ class ClientController extends Controller{
      * @return Response
      */
     public function destroy($id){
-        return Client::find($id)->delete();
+        return $this->repository->delete($id);
     }
 }
