@@ -18,4 +18,8 @@ class Client extends Model{
      * @var array
      */
     protected $fillable = ['name', 'responsible', 'email', 'phone', 'address', 'obs'];
+
+    public function projects(){
+        return $this->hasMany('CodeProject\Entities\Project');
+    }
 }
