@@ -32,13 +32,36 @@ class ProjectService {
     	}
     }
 
+     public function show($id){
+        try{
+            return $this->repository->find($id);
+        } catch(ModelNotFoundException $e){
+            return ['error' => true, 'message' => 'Project not found'];
+        }
+    }
+
     public function update(array $data, $id){
+        $this->_projectExist($id);
+
     	try{
+            $this->repository->find($id);
     		$this->validator->with($data)->passesOrFail();
 
     		return $this->repository->update($data, $id);
-    	} catch(ValidatorException $e){
+    	} catch(ModelNotFoundException $e){
+            return ['error' => true, 'message' => 'Project not found'];
+        } catch(ValidatorException $e){
     		return ['error' => true, 'message' => $e->getMessageBag()];
     	}
+    }
+
+    public function delete($id){
+        try{
+            $this->repository->find($id);
+
+            return response()->json($this->repository->delete($id));
+        } catch(ModelNotFoundException $e){
+            return ['error' => true, 'message' => 'Project not found'];
+        }
     }
 }

@@ -52,7 +52,7 @@ class ClientController extends Controller {
      * @return Response
      */
     public function show($id){
-        return $this->repository->find($id);
+        return $this->service->show($id);
     }
 
     /**
@@ -73,6 +73,6 @@ class ClientController extends Controller {
      * @return Response
      */
     public function destroy($id){
-        return $this->repository->delete($id);
+        return $this->service->delete($id);
     }
 }

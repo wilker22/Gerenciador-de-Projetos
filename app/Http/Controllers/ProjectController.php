@@ -73,6 +73,6 @@ class ProjectController extends Controller {
      * @return Response
      */
     public function destroy($id){
-        return $this->repository->delete($id);
+        return $this->service->delete($id);
     }
 }
